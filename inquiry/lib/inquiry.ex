@@ -14,8 +14,8 @@ defmodule Inquiry do
 
   ## Examples
 
-      iex> Inquiry.hello
-      :world
+      iex> Inquiry.inquiry(%{hello: ['world', "me"]}, "hello.0")
+      'world'
 
   """
   def inquiry(data, query) do
