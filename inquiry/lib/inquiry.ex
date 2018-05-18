@@ -6,11 +6,11 @@ defmodule Inquiry do
   I allows you to use strings as: key_in_map_one.key2.0 to get data
   from the nested structures.
 
-  The nested structures support by now Lists and Maps
+  The nested structures support by now are Lists and Maps
   """
 
   @doc """
-  Hello world.
+  Get the data from the specified path, returns the default or :nil
 
   ## Examples
 
@@ -18,7 +18,7 @@ defmodule Inquiry do
       'world'
 
   """
-  def inquiry(data, query) do
+  def inquiry(data, query, default \\ :nil) do
     decomposed_query = String.split(query, ".")
     _inquiry(data, decomposed_query)
   end
