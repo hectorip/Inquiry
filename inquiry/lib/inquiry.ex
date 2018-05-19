@@ -20,10 +20,17 @@ defmodule Inquiry do
   """
   def inquiry(data, query, default \\ :nil) do
     decomposed_query = String.split(query, ".")
-    _inquiry(data, decomposed_query)
+
+    _inquiry(data, decomposed_query) || default
   end
 
-  def _inquiry(data, query) do
-    data
+  def _inquiry(data, []), do: data
+
+  def _inquiry([], _), do: nil
+  def _inquiry(data = [_|_], [current_query|rest]) do
+    {index, _} = Integer.parse(current_query)
+    _inquiry(Enum.at(data, index), rest)
   end
+
+  def _inquiry(data, [current_query|rest]), do: data |> Map.get(current_query) # lacks non-string keys querying
 end
