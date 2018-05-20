@@ -1,12 +1,13 @@
 defmodule Inquiry do
   @moduledoc """
-  Inquiry allows you to extract data from a nested data structura
+  Inquiry allows you to extract data from a nested data structure
   like the ones you get from parsing a JSON.
 
-  I allows you to use strings as: key_in_map_one.key2.0 to get data
+  It allows you to use strings as: key_in_map_one.key2.0 to get data
   from the nested structures.
 
-  The nested structures support by now are Lists and Maps
+  The nested structures supported by now are Lists and Maps with string
+  keys, we're working in a new version that suppports atoms.
   """
 
   @doc """
