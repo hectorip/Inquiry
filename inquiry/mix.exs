@@ -8,12 +8,12 @@ defmodule Inquiry.MixProject do
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      description: "",
+      description: "Get data from nested data structures (like JSON) in a XPath style",
       package: [
         name: "Inquiry",
-        organization: "hectorip",
-        licenses: "MIT",
-        maintainers: "hectorip",
+        # organization: "hectorip",
+        licenses: ["MIT"],
+        maintainers: ["@hectorip"],
         links: %{"GitHub" => "https://github.com/hectorip/Inquiry"}
       ]
     ]
