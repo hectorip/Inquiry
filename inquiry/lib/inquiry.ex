@@ -17,6 +17,8 @@ defmodule Inquiry do
       iex> Inquiry.inquiry(%{"hello" => ['world', "me"]}, "hello.0")
       'world'
 
+      iex> Inquiry.inquiry(%{"hello" => ["zero", "one", "two", %{"yes" => true}]}, "hello.3.yes")
+      true
   """
   def inquiry(data, query, default \\ :nil) do
     decomposed_query = String.split(query, ".")
