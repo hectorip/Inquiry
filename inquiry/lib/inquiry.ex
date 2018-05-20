@@ -7,7 +7,7 @@ defmodule Inquiry do
   from the nested structures.
 
   The nested structures supported by now are Lists and Maps with string
-  keys, we're working in a new version that suppports atoms.
+  keys, we're working in a new version supporting atoms as keys and Keywords.
   """
 
   @doc """
