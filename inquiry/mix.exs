@@ -10,7 +10,7 @@ defmodule Inquiry.MixProject do
       deps: deps(),
       description: "Get data from nested data structures (like JSON) in a XPath style",
       package: [
-        name: "Inquiry",
+        name: "inquiry",
         # organization: "hectorip",
         licenses: ["MIT"],
         maintainers: ["@hectorip"],
