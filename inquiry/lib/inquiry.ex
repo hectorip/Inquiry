@@ -14,7 +14,7 @@ defmodule Inquiry do
 
   ## Examples
 
-      iex> Inquiry.inquiry(%{hello: ['world', "me"]}, "hello.0")
+      iex> Inquiry.inquiry(%{"hello" => ['world', "me"]}, "hello.0")
       'world'
 
   """
@@ -31,6 +31,5 @@ defmodule Inquiry do
     {index, _} = Integer.parse(current_query)
     _inquiry(Enum.at(data, index), rest)
   end
-
-  def _inquiry(data, [current_query|rest]), do: data |> Map.get(current_query) # lacks non-string keys querying
+  def _inquiry(data, [current_query|rest]), do: data |> Map.get(current_query) |> _inquiry(rest) # lacks non-string keys querying
 end
