@@ -35,4 +35,6 @@ defmodule Inquiry do
     _inquiry(Enum.at(data, index), rest)
   end
   def _inquiry(data, [current_query|rest]), do: data |> Map.get(current_query) |> _inquiry(rest) # lacks non-string keys querying
+
+  # TODO: add atoms as keys and keyword lists
 end
