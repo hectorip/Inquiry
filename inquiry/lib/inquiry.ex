@@ -3,11 +3,11 @@ defmodule Inquiry do
   Inquiry allows you to extract data from a nested data structure
   like the ones you get from parsing a JSON.
 
-  It allows you to use queries as: key_in_map_one.key2.0 to get data
+  It allows you to use strings as: `person.adresses.0.street` to get data
   from the nested structures.
 
   The nested structures supported by now are Lists and Maps with string
-  keys, I'm working in a new version supporting atoms as keys and Keywords.
+  keys, we're working in a new version that supports atoms.
   """
 
   @doc """
@@ -21,6 +21,7 @@ defmodule Inquiry do
       iex> Inquiry.inquiry(%{"hello" => ["zero", "one", "two", %{"yes" => true}]}, "hello.3.yes")
       true
   """
+
   def inquiry(data, query, default \\ :nil) do
     decomposed_query = String.split(query, ".")
 
