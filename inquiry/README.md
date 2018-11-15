@@ -10,7 +10,7 @@ by adding `inquiry` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:inquiry, "~> 0.1.0"}
+    {:inquiry, "~> 0.1.1"}
   ]
 end
 ```
