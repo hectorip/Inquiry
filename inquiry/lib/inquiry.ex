@@ -27,16 +27,19 @@ defmodule Inquiry do
     _inquiry(data, decomposed_query) || default
   end
 
+  # When there's no query
   def _inquiry(data, []), do: data
 
+  # When there's an empty list or not found data
   def _inquiry([], _), do: nil
-
   def _inquiry(nil,_), do: nil
 
+  # When data is a non-empty list
   def _inquiry(data = [_|_], [current_query|rest]) do
     {index, _} = Integer.parse(current_query)
     _inquiry(Enum.at(data, index), rest)
   end
 
+  # When data is anything else, but we only expect maps
   def _inquiry(data, [current_query|rest]), do: data |> Map.get(current_query) |> _inquiry(rest) # lacks non-string keys querying
 end
