@@ -30,11 +30,13 @@ defmodule Inquiry do
   def _inquiry(data, []), do: data
 
   def _inquiry([], _), do: nil
+
+  def _inquiry(nil,_), do: nil
+
   def _inquiry(data = [_|_], [current_query|rest]) do
     {index, _} = Integer.parse(current_query)
     _inquiry(Enum.at(data, index), rest)
   end
-  # def _inquiry(data, [current_query|rest]) when is_list(data) and current_query
+
   def _inquiry(data, [current_query|rest]), do: data |> Map.get(current_query) |> _inquiry(rest) # lacks non-string keys querying
-  # TODO: add atoms as keys and keyword lists
 end
