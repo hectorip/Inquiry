@@ -6,8 +6,7 @@ defmodule Inquiry do
   It allows you to use strings as: `person.adresses.0.street` to get data
   from the nested structures.
 
-  The nested structures supported by now are Lists and Maps with string
-  keys, we're working in a new version that supports atoms.
+  Thinking a bit more about it, it's like a `dig` function, but for strings.
   """
 
   @doc """
@@ -24,8 +23,26 @@ defmodule Inquiry do
 
   def inquiry(data, query, default \\ :nil) do
     decomposed_query = String.split(query, ".")
-
     _inquiry(data, decomposed_query) || default
+  end
+
+  @doc """
+  Alias for `inquiry/3`, to make it easier to remember
+  Get supports :atoms if you call it with a list of atoms elements
+
+  ## Examples
+      iex> Inquiry.get(%{"hello" => ["world", "me"]}, "hello.0")
+      "world"
+
+      iex> Inquiry.get(%{hello: ["world", "me"]}, [:hello, 0])
+      "world"
+  """
+  def get(data, query, default \\ :nil)  when is_list(query) do
+    _inquiry(data, query) || default
+  end
+
+  def get(data, query, default) do
+    inquiry(data, query, default)
   end
 
   # When there's no query
