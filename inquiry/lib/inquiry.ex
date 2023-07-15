@@ -36,6 +36,7 @@ defmodule Inquiry do
 
       iex> Inquiry.get(%{hello: ["world", "me"]}, [:hello, 0])
       "world"
+      iex> Inquiry.get(%{hello: ["zero", "one", "two", %{yes: true}]}, [:hello, 3, :yes])
   """
   def get(data, query, default \\ :nil)  when is_list(query) do
     _inquiry(data, query) || default
